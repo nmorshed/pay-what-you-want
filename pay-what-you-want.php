@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' )){
 add_action( 'admin_notices', function() {
 
 	$notice = '<div class="notice notice-error is-dismissible">';
-    	$notice .= "<p>Please install <strong> WooCommerce </strong> plugin before use the Pay What You Want plugin</p>";
+    	$notice .= "<p>Please install <strong> WooCommerce </strong> plugin before use the <strong>Pay What You Want<strong> plugin</p>";
 	$notice .= '</div>';
 
 	if ( ! class_exists( 'WooCommerce' ) ) {
