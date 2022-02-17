@@ -9,4 +9,4 @@ Porducts' price may vary for either all products or for the products of differen
 
 
 # Watch this video about coding standard before start your code
-https://www.youtube.com/watch?v=xIV8aRQBerY
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xIV8aRQBerY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
