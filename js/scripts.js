@@ -1,32 +1,32 @@
 (function($){
 
-    $(document).ready(function(){
+	$(document).ready(function(){
 
-    	var select_price_area = $('body .bw-single-price-area');
+		var select_price_area = $('body .bw-single-price-area');
 
-    	// excute code only when we need this
-    	if ( 1 == select_price_area.length ) {
+		// excute code only when we need this
+		if ( 1 == select_price_area.length ) {
 
-    		let input_price_field = select_price_area.find('.bw-price');
+			let input_price_field = select_price_area.find('.bw-price');
 
-    		select_price_area.on('click', '.bw-btn-price', function(e){
+			select_price_area.on('click', '.bw-btn-price', function(e){
 
-    			e.preventDefault();
+				e.preventDefault();
 
-    			let price = $(this).data('price'); 			
-    			input_price_field.val(price);
+				let price = $(this).data('price');
+				input_price_field.val(price);
 
-    			$(this).siblings().removeClass('price-selected');
-    			$(this).addClass('price-selected');
+				$(this).siblings().removeClass('price-selected');
+				$(this).addClass('price-selected');
 
-    			//console.log(price);
+				//console.log(price);
 
-    		});
+			});
 
-    	}
-		
-		
-		//console.log(select_price_area.length);
+		}
+	
+	
+	//console.log(select_price_area.length);
 
-    });
+	});
 })(jQuery);
