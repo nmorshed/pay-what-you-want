@@ -7,7 +7,7 @@
  * Version:           2.0
  * Author:            Better Wizard
  * Author URI:        http://betterwizard.com
- * Text Domain:       bw
+ * Text Domain:       pwyw
  * Domain Path:       /languages
  */
 

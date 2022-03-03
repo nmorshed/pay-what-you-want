@@ -4,37 +4,17 @@
  */
 
 function bw_pwyw_price_select_box_before_add_to_cart() {
-
-	global $product;
-	/* echo '<pre>';
-	print_r($product->regular_price);	// product er ID theke price access krbo
-	echo '</pre>'; */
-
-	// $product is an object; so, we get $regular_price as following
-	$base_price = $product->regular_price;
-
-	$price_1 = round($base_price / 4);
-	$price_2 = round($base_price / 4 * 2);
-	$price_3 = round($base_price / 4 * 3);
-	$price_4 = round($base_price / 4 * 4);
-
-	?>
-
-	<!-- function nite hbe, shop page theke kaj krbo -->
-	
-	<div class='bw-single-price-area'>
-		<input type="hidden" name="bw-price" class="bw-price" value="0">
-		<div class="bw-select-price">
-			<!-- key note, ekta html attribute html nei r php, hoy FULL html a nite hbe, naile FULL php te; e.g. data-price=<\?php{$price_1}"; ?> NOT ALLOWED -->
-			<button <?php echo "data-price={$price_1}"; ?> class="bw-btn-price">৳<?php echo $price_1; ?></button>
-			<button <?php echo "data-price={$price_2}"; ?> class="bw-btn-price">৳<?php echo $price_2; ?></button>
-			<button <?php echo "data-price={$price_3}"; ?> class="bw-btn-price">৳<?php echo $price_3; ?></button>
-			<button <?php echo "data-price={$price_4}"; ?> class="bw-btn-price">৳<?php echo $price_4; ?></button>
-		</div>
-	</div>
-
-	<?php
+		// require_once( plugin_dir_path(__FILE__) . '/form-one-fourth.php' );
+		
+		
+		/* if ( isset( $one_third_price ) ) {
+			include( plugin_dir_path(__FILE__) . '/form-one-third.php' );
+		} elseif ( isset( $one_fourth_price ) {
+			include( plugin_dir_path(__FILE__) . '/form-one-fourth.php' );
+		} */
 }
+
+	
 
 add_action( 'woocommerce_before_add_to_cart_button', 'bw_pwyw_price_select_box_before_add_to_cart', 10 );
 
@@ -88,12 +68,11 @@ function spa_set_own_package_price( $wc_cart ){
 
 
 function elex_wfp_before_calculate_totals( $cart_obj ) {
-
-    foreach( $cart_obj->get_cart() as $key=>$value ) {
-			if ( isset( $value['bw-price'] )) {
-					$price = $value['bw-price'];
-					$value['data']->set_price( $price );
-			}
-    }
+	foreach( $cart_obj->get_cart() as $key=>$value ) {
+		if ( isset( $value['bw-price'] )) {
+			$price = $value['bw-price'];
+			$value['data']->set_price( $price );
+		}
+	}
 }
 add_action( 'woocommerce_before_calculate_totals', 'elex_wfp_before_calculate_totals', 10, 3 );
