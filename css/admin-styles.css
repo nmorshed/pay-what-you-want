@@ -1,0 +1,22 @@
+/* ----------------------------------------------------
+Price Variation Page's Styles
+---------------------------------------------------- */
+
+#pwyw_various_price_dropdown {
+  display: none;
+  background-color: #fff;
+	color: red;
+  padding: 20px;
+}
+
+#pwyw_fixed_price_dropdown {
+  display: none;
+  background-color: #fff;
+	color: green;
+  padding: 20px;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}

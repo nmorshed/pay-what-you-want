@@ -4,7 +4,8 @@
  */
 
 function bw_pwyw_price_select_box_before_add_to_cart() {
-		// require_once( plugin_dir_path(__FILE__) . '/form-one-fourth.php' );
+	
+		require_once( plugin_dir_path(__FILE__) . '/form-one-fourth.php' );
 		
 		
 		/* if ( isset( $one_third_price ) ) {
