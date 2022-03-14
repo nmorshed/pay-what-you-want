@@ -1,6 +1,6 @@
 (function($){
 
-	$(document).ready(function(){
+	$(document).ready(function() {
 
 		var select_price_area = $('body .bw-single-price-area');
 
@@ -9,7 +9,7 @@
 
 			let input_price_field = select_price_area.find('.bw-price');
 
-			select_price_area.on('click', '.bw-btn-price', function(e){
+			select_price_area.on('click', '.bw-btn-price', function(e) {
 
 				e.preventDefault();
 

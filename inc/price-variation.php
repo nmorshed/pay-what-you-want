@@ -26,10 +26,12 @@ class pwyw_price_variation {
 
 	public function pwyw_save_form() {
 
-		if ( isset($_POST['pwyw_products']) || isset($_POST['pwyw_price']) ) {
+		if ( isset($_POST['pwyw_products']) || isset($_POST['pwyw_price']) || isset($_POST['pwyw_various_price_name']) || isset($_POST['pwyw_fixed_price_name']) ) {
 			
 			update_option( 'pwyw_products', sanitize_text_field($_POST['pwyw_products']) );
 			update_option( 'pwyw_price', sanitize_text_field($_POST['pwyw_price']) );
+			update_option( 'pwyw_various_price_name', sanitize_text_field($_POST['pwyw_various_price_name']) );
+			update_option( 'pwyw_fixed_price_name', $_POST['pwyw_fixed_price_name'] );
 
 			wp_redirect('admin.php?page=pwyw');
 

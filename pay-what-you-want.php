@@ -34,20 +34,25 @@ add_action( 'admin_notices', function() {
 
 
 /***********************************
-	Load Js & Css Files
+	Load JS & CSS Files
 ***********************************/
 function bw_pay_what_you_want_style_and_scripts() {
 
 	wp_enqueue_style( 'pay_what_you_want_style', plugins_url( '/css/styles.css', __FILE__ ) );
 	wp_enqueue_script( 'pay_what_you_want_script', plugins_url( '/js/scripts.js', __FILE__ ) , array('jquery'), '1.0.0', true);
 
-	$data = array(
-		"admin_ajax"	=> admin_url("admin-ajax.php"),
-		"_nonce"		=> wp_create_nonce( 'pay_what_you_want' ),
-	);
-	wp_localize_script("pay_what_you_want_script","WPAjax", $data);
 }
 add_action('wp_enqueue_scripts', 'bw_pay_what_you_want_style_and_scripts');
+
+/***********************************
+	Load JS & CSS in admin page
+***********************************/
+function pwyw_admin_page_style_and_scripts() {
+	wp_enqueue_script( 'pay_what_you_want_admin_script', plugins_url( '/js/admin-scripts.js', __FILE__ ) , array('jquery'), '1.0.0', true);
+	wp_enqueue_style( 'pay_what_you_want_admin_style', plugins_url( '/css/admin-styles.css', __FILE__ ) );
+}
+
+add_action('admin_enqueue_scripts', 'pwyw_admin_page_style_and_scripts');
 
 
 /***********************************
