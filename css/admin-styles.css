@@ -2,21 +2,26 @@
 Price Variation Page's Styles
 ---------------------------------------------------- */
 
-#pwyw_various_price_dropdown {
+.pwyw_various_price_dropdown, .pwyw_fixed_price_dropdown {
   display: none;
   background-color: #fff;
-	color: red;
   padding: 20px;
 }
 
-#pwyw_fixed_price_dropdown {
-  display: none;
+.pwyw_various_price_dropdown_active, .pwyw_fixed_price_dropdown_active {
+  display: block;
   background-color: #fff;
-	color: green;
   padding: 20px;
 }
 
 .wrapper {
   display: flex;
   flex-wrap: wrap;
+}
+
+.pwyw_remove {
+  text-decoration: none;
+  background-color: #dd4021;
+  color: #fff;
+  padding: 1px 2px;
 }
