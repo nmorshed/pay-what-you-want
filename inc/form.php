@@ -29,10 +29,26 @@
 	</p>
 
 	<p>
-		<input type='radio' id='pwyw_specific_products' name='pwyw_products' value="1" <?php $fixed_checked = checked( '1', $pwyw_products ); ?>>
-	  <label for='pwyw_specific_products'><?php _e('No, we want this for the products of a few specific categories', 'pwyw'); ?></label>
+		<input type='radio' id='pwyw_categorized_products' name='pwyw_products' value="1" <?php $category_checked = checked( '1', $pwyw_products ); ?>>
+	  <label for='pwyw_categorized_products'><?php _e('No, we want this for the products of a few specific categories', 'pwyw'); ?></label>
 	</p>
 
+	<?php
+		// Different categories' products
+		$all_product_categories = get_categories( ['taxonomy' => 'product_cat'] );
+		/* echo '<pre>';
+		print_r($all_product_categories);
+		echo '</pre>'; */
+	?>
+
+	<div id="pwyw_product_categories<?php if($category_checked) echo '_active'; ?>">
+		<?php
+			foreach($all_product_categories as $category) {
+				print_r($category->cat_name);
+				echo '<br>';
+			}
+		?>
+	</div>	
 
 	<h3>
 		<?php _e('Which type of price is your requirement?', 'pwyw'); ?>

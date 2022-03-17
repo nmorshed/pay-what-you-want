@@ -2,6 +2,19 @@
 Price Variation Page's Styles
 ---------------------------------------------------- */
 
+#pwyw_product_categories, #pwyw_product_categories_active {
+  background-color: #fff;
+  padding: 20px;
+}
+
+#pwyw_product_categories {
+  display: none;
+}
+
+#pwyw_product_categories_active {
+  display: block;
+}
+
 .pwyw_various_price_dropdown, .pwyw_fixed_price_dropdown {
   display: none;
   background-color: #fff;
