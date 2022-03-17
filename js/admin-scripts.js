@@ -1,19 +1,38 @@
 (function($) {
 
 	$(document).ready( function() {
+		// categorized products
+		let categorized_products_slider = $('#pwyw_categorized_products');
+		
+		categorized_products_slider.click( function() {
+			$('#pwyw_product_categories').slideDown();
+			$('#pwyw_product_categories_active').slideDown();
+		});
 
-		let various_price = $('#pwyw_various_price');
+		let all_products_slider = $('#pwyw_all_products');
 
-		various_price.click( function() {
+		all_products_slider.click( function() {
+			$('#pwyw_product_categories').slideUp();
+			$('#pwyw_product_categories_active').slideUp();
+		});
+
+
+		let various_price_slider = $('#pwyw_various_price');
+
+		various_price_slider.click( function() {
 			$('.pwyw_various_price_dropdown').slideDown();
+			$('.pwyw_various_price_dropdown_active').slideDown();
 			$('.pwyw_fixed_price_dropdown').slideUp();
+			$('.pwyw_fixed_price_dropdown_active').slideUp();
 		});
 
     let fixed_price_slider = $('#pwyw_fixed_price');
 
 		fixed_price_slider.click( function() {
 			$('.pwyw_fixed_price_dropdown').slideDown();
+			$('.pwyw_fixed_price_dropdown_active').slideDown();
 			$('.pwyw_various_price_dropdown').slideUp();
+			$('.pwyw_various_price_dropdown_active').slideUp();
 		});
 
     let fixed_price_value = $('.pwyw_fixed_price');
