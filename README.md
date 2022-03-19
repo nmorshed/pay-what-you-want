@@ -10,3 +10,6 @@ Porducts' price may vary for either all products or for the products of differen
 
 # Watch this video about coding standard before start your code
 https://www.youtube.com/watch?v=xIV8aRQBerY
+
+# Git Cheat Sheet
+https://education.github.com/git-cheat-sheet-education.pdf
