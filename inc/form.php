@@ -51,8 +51,8 @@
 	<div class="pwyw_product_categories<?php if($category_checked) echo '_active'; ?>">
 		<?php
 
-			$selected = '';
-			$selected_category = get_option('pwyw_each_category');
+			$pwyw_selected = '';
+			$pwyw_selected_category = get_option('pwyw_each_category');
 
 			foreach($all_product_categories as $category) {
 				// print_r($category->cat_name);
@@ -63,15 +63,15 @@
 				echo '</pre>'; */
 
 				// echo $each_category;
-				$category = (array) $category;
+				// $category = (array) $category;
 
-				$selected = ( in_array( $each_category, $selected_category ) ) ? 'checked' : '';
+				$pwyw_selected = ( in_array( $each_category, $pwyw_selected_category ) ) ? 'checked' : '';
 
-				echo "<input type='checkbox' name='pwyw_each_category[]' value='$each_category' id='pwyw_$each_category' $selected /> <label for='pwyw_$each_category'>$each_category </label>";
+				echo "<input type='checkbox' name='pwyw_each_category[]' value='$each_category' id='pwyw_$each_category' $pwyw_selected /> <label for='pwyw_$each_category'>$each_category </label>";
 				echo '<br>';
 
 				// value='%s' er porer %s is PLACEHOLDER (see html form placeholder for details)
-				/* printf("<input type='checkbox' name='pwyw_each_category[]' value='%s' %s /> %s <br/>", $each_category, $selected, $each_category);
+				/* printf("<input type='checkbox' name='pwyw_each_category[]' value='%s' %s /> %s <br/>", $each_category, $pwyw_selected, $each_category);
 				echo '<br>'; */
 			}
 		?>
