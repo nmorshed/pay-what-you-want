@@ -5,15 +5,15 @@
 		let categorized_products_slider = $('#pwyw_categorized_products');
 		
 		categorized_products_slider.click( function() {
-			$('#pwyw_product_categories').slideDown();
-			$('#pwyw_product_categories_active').slideDown();
+			$('.pwyw_product_categories').slideDown();
+			$('.pwyw_product_categories_active').slideDown();
 		});
 
 		let all_products_slider = $('#pwyw_all_products');
 
 		all_products_slider.click( function() {
-			$('#pwyw_product_categories').slideUp();
-			$('#pwyw_product_categories_active').slideUp();
+			$('.pwyw_product_categories').slideUp();
+			$('.pwyw_product_categories_active').slideUp();
 		});
 
 

@@ -20,6 +20,7 @@
 		$pwyw_price = get_option('pwyw_price');
 		$pwyw_various_price_name = get_option('pwyw_various_price_name');
 		$pwyw_fixed_price_name = get_option('pwyw_fixed_price_name');
+		// $pwyw_each_category = get_option('pwyw_each_category');
 
 	?>
 
@@ -39,13 +40,39 @@
 		/* echo '<pre>';
 		print_r($all_product_categories);
 		echo '</pre>'; */
+
+		// global $wp_roles;
+
+		/* echo '<pre>';
+		print_r($wp_roles);
+		echo '</pre>'; */
 	?>
 
-	<div id="pwyw_product_categories<?php if($category_checked) echo '_active'; ?>">
+	<div class="pwyw_product_categories<?php if($category_checked) echo '_active'; ?>">
 		<?php
+
+			$selected = '';
+			$selected_category = get_option('pwyw_each_category');
+
 			foreach($all_product_categories as $category) {
-				print_r($category->cat_name);
+				// print_r($category->cat_name);
+				$each_category = $category->cat_name;
+				
+				/* echo '<pre>';
+				print_r($category);
+				echo '</pre>'; */
+
+				// echo $each_category;
+				$category = (array) $category;
+
+				$selected = ( in_array( $each_category, $selected_category ) ) ? 'checked' : '';
+
+				echo "<input type='checkbox' name='pwyw_each_category[]' value='$each_category' id='pwyw_$each_category' $selected /> <label for='pwyw_$each_category'>$each_category </label>";
 				echo '<br>';
+
+				// value='%s' er porer %s is PLACEHOLDER (see html form placeholder for details)
+				/* printf("<input type='checkbox' name='pwyw_each_category[]' value='%s' %s /> %s <br/>", $each_category, $selected, $each_category);
+				echo '<br>'; */
 			}
 		?>
 	</div>	
