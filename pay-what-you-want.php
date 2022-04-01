@@ -64,5 +64,7 @@ add_action( 'plugins_loaded', function(){
 	if ( class_exists( 'WooCommerce' ) ) {
 		require_once( plugin_dir_path( __FILE__ ) . 'inc/pay_what_you_want.php' );
 		require_once( plugin_dir_path(__FILE__) . 'inc/price-variation.php' );
+		require_once( plugin_dir_path(__FILE__) . 'inc/product-data.php' );
+		// require_once( plugin_dir_path(__FILE__) . 'inc/settings-tab.php' );
 	}
 });

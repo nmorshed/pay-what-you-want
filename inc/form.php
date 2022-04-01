@@ -23,12 +23,17 @@
 		// $pwyw_each_category = get_option('pwyw_each_category');
 
 	?>
-
+	<!----------------------------------------------
+	******************* Products *******************
+	----------------------------------------------->
+	
+	<!-- All Products -->
 	<p>
 		<input type='radio' id='pwyw_all_products' name='pwyw_products' value="0" <?php checked( '0', $pwyw_products ); ?>>
 	  <label for='pwyw_all_products'><?php _e('Yes, we want this for all products', 'pwyw'); ?></label>
 	</p>
 
+	<!-- Categorized Products -->
 	<p>
 		<input type='radio' id='pwyw_categorized_products' name='pwyw_products' value="1" <?php $category_checked = checked( '1', $pwyw_products ); ?>>
 	  <label for='pwyw_categorized_products'><?php _e('No, we want this for the products of a few specific categories', 'pwyw'); ?></label>
@@ -40,14 +45,9 @@
 		/* echo '<pre>';
 		print_r($all_product_categories);
 		echo '</pre>'; */
-
-		// global $wp_roles;
-
-		/* echo '<pre>';
-		print_r($wp_roles);
-		echo '</pre>'; */
 	?>
 
+	<!-- Different Categories of Product -->
 	<div class="pwyw_product_categories<?php if($category_checked) echo '_active'; ?>">
 		<?php
 
@@ -67,20 +67,24 @@
 
 				$pwyw_selected = ( in_array( $each_category, $pwyw_selected_category ) ) ? 'checked' : '';
 
-				echo "<input type='checkbox' name='pwyw_each_category[]' value='$each_category' id='pwyw_$each_category' $pwyw_selected /> <label for='pwyw_$each_category'>$each_category </label>";
-				echo '<br>';
+				echo "<input type='checkbox' name='pwyw_each_category[]' value='$each_category' id='pwyw_$each_category' $pwyw_selected /> <label for='pwyw_$each_category'>$each_category </label><br/>";
 
 				// value='%s' er porer %s is PLACEHOLDER (see html form placeholder for details)
-				/* printf("<input type='checkbox' name='pwyw_each_category[]' value='%s' %s /> %s <br/>", $each_category, $pwyw_selected, $each_category);
-				echo '<br>'; */
+				// printf("<input type='checkbox' name='pwyw_each_category[]' value='%s' %s /> %s <br/>", $each_category, $pwyw_selected, $each_category);
+
 			}
 		?>
 	</div>	
+
+	<!----------------------------------------------
+	******************* Price *******************
+	----------------------------------------------->
 
 	<h3>
 		<?php _e('Which type of price is your requirement?', 'pwyw'); ?>
 	</h3>
 
+	<!-- Various Price -->
 	<p>
 		<input type='radio' id='pwyw_various_price' name='pwyw_price' value='0' <?php $various_checked = checked( '0', $pwyw_price ); ?>>
 	  <label for='pwyw_various_price'><?php _e('Depending on product price, prices may vary', 'pwyw'); ?></label>
@@ -93,10 +97,11 @@
 			<label for='pwyw_various_price'><?php _e('How many options will the prices vary', 'pwyw'); ?></label>
 		</p>
 		<p>
-			<input type='number' id='pwyw_various_price_id' name='pwyw_various_price_name' value="<?php echo esc_attr($pwyw_various_price_name); ?>" min='2' max='10'>
+			<input type='number' step='any' id='pwyw_various_price_id' name='pwyw_various_price_name' value="<?php echo esc_attr($pwyw_various_price_name); ?>" min='2' max='10'>
 		</p>
 	</div>	<!-- End of various price dropdown field -->
 
+	<!-- Fixed Price -->
 	<p>
 		<input type='radio' id='pwyw_fixed_price' name='pwyw_price' value='1' <?php $fixed_checked = checked( '1', $pwyw_price ); ?>>
 	  <label for='pwyw_fixed_price'><?php _e('We want fixed price', 'pwyw'); ?></label>
@@ -111,7 +116,7 @@
 			<?php foreach ($pwyw_fixed_price_name as $single_price): ?>
 				
 				<div class='input_parent'>
-					<input type='number' class='pwyw_fixed_price' name='pwyw_fixed_price_name[]' placeholder='Enter a Price' value="<?php echo esc_attr($single_price); ?>" min='1' />
+					<input type='number' step='any' class='pwyw_fixed_price' name='pwyw_fixed_price_name[]' placeholder='Enter a Price' value="<?php echo esc_attr($single_price); ?>" min='1' />
 					<a href='' class='pwyw_remove'>x</a>
 					<!-- javascript:void(0) is equivalent to script e.preventDefault() -->
 				</div>

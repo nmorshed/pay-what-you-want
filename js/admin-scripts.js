@@ -41,7 +41,7 @@
 		
     let wrapper = $('.wrapper');
 		let input_parent = $('.input_parent');
-		let fieldHTML = "<div><input type='number' class='pwyw_fixed_price' name='pwyw_fixed_price_name[]' placeholder='Enter a Price' value='' /><a href='javascript:void(0);' class='pwyw_remove' style='background-color: #dd4021; color: #fff; text-decoration: none;'>x</a></div>";
+		let fieldHTML = "<div><input type='number' class='pwyw_fixed_price' name='pwyw_fixed_price_name[]' placeholder='Enter a Price' value='' /><a href='' class='pwyw_remove' style='background-color: #dd4021; color: #fff; text-decoration: none;'>x</a></div>";
 
     pwyw_append.click(function() {
 			wrapper.append(fieldHTML);
@@ -57,6 +57,25 @@
 			// console.log(this);
 			$(this).remove();
 		}); */
+
+		/* ----------------------------------------
+		-------------- Settings Tab --------------
+		---------------------------------------- */
+		let input_wrapper = $('.input_wrapper');
+		let wrapper_product = $('.wrapper_product');
+		let pwyw_append_product = $('#pwyw_append_product');
+		let settings_tab_HTML = "<div><input type='number' step='any' class='pwyw_product_tab' name='pwyw_product_tab_name[]' placeholder='Enter a Price' value='' /><a href='' class='pwyw_remove' style='background-color: #dd4021; color: #fff; text-decoration: none;'>x</a></div>";
+
+		pwyw_append_product.click(function() {
+			wrapper_product.append(settings_tab_HTML);
+		});
+
+		input_wrapper.on('click', '.pwyw_remove', function(e) {
+			e.preventDefault();
+			// console.log(this);
+			$(this).parent('div').remove();
+		});
+
 
   });
 
