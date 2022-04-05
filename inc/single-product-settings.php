@@ -12,22 +12,13 @@ function pwyw_product_data_tab( $tabs ) {
 }
 
 
-
-
-
 // Settings Fields.
 add_action('woocommerce_product_data_panels', 'pwyw_single_product_settings_fields');
 
 function pwyw_single_product_settings_fields() {
     
     global $post;
-
-    $post_id = $post->ID;
-    $val = get_post_meta($post_id, 'pwyw-single-price', true);
-print_r($val);
-
-    ?>
-    
+    $post_id = $post->ID; ?>
 
     <div id='pwyw-tab' class = 'panel woocommerce_options_panel'>
     	<div class = 'options_group' > <?php
@@ -35,7 +26,7 @@ print_r($val);
 			// Override Defaults
 			woocommerce_wp_checkbox(
 			    array(
-					'id' => '_checkbox',
+					'id' => '_pwyw_override_defaults',
 					'label' => __('Override Defaults?', 'pwyw' ),
 					'description' => __( 'Override', 'pwyw' )
 			    )
@@ -56,23 +47,17 @@ print_r($val);
     </div><?php
 }
 
-
-
-
-/** Hook callback function to save custom fields information */
+// Save data
 function woocom_save_proddata_custom_fields($post_id) {
-    // Save Text Field
-    $text_field = $_POST['pwyw-single-price'];
-    if (!empty($text_field)) {
-        update_post_meta($post_id, 'pwyw-single-price', ($text_field));
+
+    $pwyw_single_rice = $_POST['pwyw-single-price'];
+    if (!empty($pwyw_single_rice)) {
+        update_post_meta($post_id, 'pwyw-single-price', ($pwyw_single_rice));
     }
 
-    // Save Checkbox
-    $checkbox = isset($_POST['_checkbox']) ? 'yes' : 'no';
-    update_post_meta($post_id, '_checkbox', $checkbox);
+    $checkbox = isset($_POST['_pwyw_override_defaults']) ? 'yes' : 'no';
+    update_post_meta($post_id, '_pwyw_override_defaults', $checkbox);
 }
 
 add_action( 'woocommerce_process_product_meta_simple', 'woocom_save_proddata_custom_fields'  );
-
-// You can uncomment the following line if you wish to use those fields for "Variable Product Type"
 add_action( 'woocommerce_process_product_meta_variable', 'woocom_save_proddata_custom_fields'  );
