@@ -11,6 +11,7 @@ Price Variation Page's Styles
 .price-set-input {
     display: inline-block;
     position: relative;
+    margin-right: 5px;
 }
 .pwyw-remove {
     background: #fff;
@@ -40,42 +41,11 @@ Price Variation Page's Styles
     cursor: pointer;
 }
 
-
-/*
-#pwyw_product_categories, #pwyw_product_categories_active {
-  background-color: #fff;
-  padding: 20px;
+#woocommerce-product-data ul.wc-tabs li.pwyw-tab_tab a:before { font-family: WooCommerce; content: '\e006'; }
+.woocommerce_options_panel .price-set-input input[type=number]{
+    width: unset;
 }
-
-#pwyw_product_categories {
-  display: none;
+.woocommerce_options_panel .pwyw-price-box{
+    padding: 5px 20px 5px 162px!important;
+    margin: 9px 0;
 }
-
-#pwyw_product_categories_active {
-  display: block;
-}
-
-.pwyw_various_price_dropdown, .pwyw_fixed_price_dropdown {
-  display: none;
-  background-color: #fff;
-  padding: 20px;
-}
-
-.pwyw_various_price_dropdown_active, .pwyw_fixed_price_dropdown_active {
-  display: block;
-  background-color: #fff;
-  padding: 20px;
-}
-
-.wrapper {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.pwyw_remove {
-  text-decoration: none;
-  background-color: #dd4021;
-  color: #fff;
-  padding: 1px 2px;
-}
-*/

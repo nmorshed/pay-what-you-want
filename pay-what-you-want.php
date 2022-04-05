@@ -67,5 +67,6 @@ add_action( 'plugins_loaded', function(){
 		require_once( plugin_dir_path( __FILE__ ) . 'inc/price.php' );
 		require_once( plugin_dir_path( __FILE__ ) . 'inc/settings-page.php' );
 		require_once( plugin_dir_path( __FILE__ ) . 'inc/helper-functions.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'inc/single-product-settings.php' );
 	}
 });

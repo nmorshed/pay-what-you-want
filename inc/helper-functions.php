@@ -10,6 +10,31 @@ function pwyw_predefined_price_set(){
     }
 }
 
+function pwyw_single_product_price_set($post_id){
+
+	$default_set = array(5,10,15,20);
+    $price_set = get_post_meta($post_id, 'pwyw-single-price', true);
+    if (empty($price_set)) {
+    	$price_set = get_option( 'pwyw_predefined_price_set', $default_set );
+    }
+
+	//$price_set = array(5,10,15,20);
+
+
+    $price_display = "";
+    $price_display .= "";
+
+    foreach ( $price_set as $price ) {
+    	$price_display .= "<div class='price-set-input'><input type='number' pattern='[0-9]+(\\.[0-9][0-9]?)?' name='pwyw-single-price[]' value='{$price}'> <span class='pwyw-remove'> x </span></div>";
+    }
+
+    $price_display .= "";
+    
+
+
+    echo $price_display;
+}
+
 function pwyw_product_categories_checkbox(){
 
 	$selected_categories = get_option( 'pwyw_product_categories' );
