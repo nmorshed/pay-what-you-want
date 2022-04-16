@@ -14,8 +14,15 @@
 
 		// Add new price to the set
 		var newPrice = "<div class='price-set-input'><input type='number' pattern='[0-9]+(\\.[0-9][0-9]?)?' name='pwyw_predefined_price_set[]' value='0' /> <span class='pwyw-remove'> x </span></div>";
+		var newSinglePrice = "<div class='price-set-input'><input type='number' pattern='[0-9]+(\\.[0-9][0-9]?)?' name='pwyw-single-price[]' value='0' /> <span class='pwyw-remove'> x </span></div>";
+		
 		$("#pwyw-add-price").on('click', function(){
-			$("#pwyw_predefined_price_set").append(newPrice);
+			if ($(this).parents('.pwyw-price-box').length) {
+				$("#pwyw_predefined_price_set").append(newSinglePrice);
+			}else{
+				$("#pwyw_predefined_price_set").append(newPrice);
+			}
+			
 		});
 
   });

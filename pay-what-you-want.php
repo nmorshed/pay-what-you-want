@@ -34,6 +34,13 @@ add_action( 'admin_notices', function() {
 
 
 /***********************************
+	Default Values
+***********************************/
+define( "PWYW_PRICE_FRACTION", 4 );
+define( "PWYW_MIN_PRICE", 5 );
+define( "PWYW_PREDEFINED_PRICE", [5,10,15,20] );
+
+/***********************************
 	Load JS & CSS Files
 ***********************************/
 function bw_pwyw_style_and_scripts() {

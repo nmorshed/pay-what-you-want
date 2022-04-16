@@ -41,7 +41,7 @@ Price Variation Page's Styles
     cursor: pointer;
 }
 
-#woocommerce-product-data ul.wc-tabs li.pwyw-tab_tab a:before { font-family: WooCommerce; content: '\e006'; }
+#woocommerce-product-data ul.wc-tabs li.pwyw-tab_tab a:before { font-family: WooCommerce; content: '\e01d'; }
 .woocommerce_options_panel .price-set-input input[type=number]{
     width: unset;
 }
