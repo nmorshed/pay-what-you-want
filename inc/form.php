@@ -1,9 +1,9 @@
 <?php
 
-	$pwyw_enable_plugin = get_option( 'pwyw_enable_plugin' );
+	$pwyw_enable_plugin = get_option( 'pwyw_enable_plugin', PWYW_ENABLE_PLUGIN );
 	$plugin_enabled = ( $pwyw_enable_plugin != 'disabled' ) ? 'checked' : '';
 	
-	$pwyw_allow_own_price = get_option( 'pwyw_allow_own_price' );
+	$pwyw_allow_own_price = get_option( 'pwyw_allow_own_price', PWYW_ALLOW_OWN_PRICE );
 	$allow_own_price = ( $pwyw_allow_own_price != 'disabled' ) ? 'checked' : '';
 	
 	$pwyw_products_area = get_option( 'pwyw_products_area', 1 );
