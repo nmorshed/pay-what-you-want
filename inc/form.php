@@ -6,8 +6,8 @@
 	$pwyw_allow_own_price = get_option( 'pwyw_allow_own_price', PWYW_ALLOW_OWN_PRICE );
 	$allow_own_price = ( $pwyw_allow_own_price != 'disabled' ) ? 'checked' : '';
 	
-	$pwyw_products_area = get_option( 'pwyw_products_area', 1 );
-	$pwyw_price_group = get_option( 'pwyw_price_group', 1 );
+	$pwyw_products_area = get_option( 'pwyw_products_area', PWYW_PRODUCTS_AREA );
+	$pwyw_price_group = get_option( 'pwyw_price_group', PWYW_PRICE_GROUP );
 	
 	$pwyw_product_categories = get_option( 'pwyw_product_categories' );
 	$pwyw_price_fraction = get_option( 'pwyw_price_fraction', PWYW_PRICE_FRACTION );
