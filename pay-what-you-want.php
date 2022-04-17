@@ -42,7 +42,6 @@ define( "PWYW_PRICE_FRACTION", 4 );
 define( "PWYW_MIN_PRICE", 5 );
 define( "PWYW_PREDEFINED_PRICE", [5,10,15,20] );
 
-pwyw_allow_own_price
 
 /***********************************
 	Load JS & CSS Files
