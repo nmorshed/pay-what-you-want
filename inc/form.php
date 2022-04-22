@@ -11,7 +11,7 @@
 	
 	$pwyw_product_categories = get_option( 'pwyw_product_categories' );
 	$pwyw_price_fraction = get_option( 'pwyw_price_fraction', PWYW_PRICE_FRACTION );
-	$pwyw_predefined_price_set = get_option( 'pwyw_predefined_price_set' );
+	//$pwyw_predefined_price_set = get_option( 'pwyw_predefined_price_set' );
 	$pwyw_min_price = get_option( 'pwyw_min_price', PWYW_MIN_PRICE );
 	
 	$all_products = '';

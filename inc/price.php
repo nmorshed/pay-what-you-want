@@ -1,20 +1,103 @@
 <?php
+
+
+// Get Settings
+
+
+
+$pwyw_min_price 			= get_option( 'pwyw_min_price', PWYW_MIN_PRICE );
+
+// Get Fraction of the price
+function pwyw_get_fraction_of_the_price($price, $fraction){
+	
+	$price_set = [];
+	$difference = $price / $fraction;
+
+	for ($i = 1; $i <= $fraction ; $i++) {
+
+		$number = (int) ( $i * $difference );
+		$price_set[] = $number;
+		$price -= ($price - $number);
+
+	}
+
+	return $price_set;
+}
+
+
+// Get the price set
+function pwyw_get_the_price_set($product_id, $price){
+	
+	$price_set = [];
+	$pwyw_price_group 		= get_option( 'pwyw_price_group', PWYW_PRICE_GROUP );
+	// 0 = predefined price
+	// 1 = Depend on product price
+
+	if ( 0 == $pwyw_price_group ) {
+		$price_set = get_option( 'pwyw_predefined_price_set', PWYW_PREDEFINED_PRICE );
+	}else{
+		$pwyw_price_fraction = get_option( 'pwyw_price_fraction', PWYW_PRICE_FRACTION );
+		$price_set = pwyw_get_fraction_of_the_price($price, $pwyw_price_fraction);
+	}
+
+	return $price_set;
+}
+
+
 /**
  * Add -- before Add to cart
  */
 function bw_pwyw_price_select_box_before_add_to_cart() {
 
 	global $product;
+	$product_id = $product->id;
 
+	$pwyw_enable_plugin 	= get_option( 'pwyw_enable_plugin', PWYW_ENABLE_PLUGIN );
+
+	if ( 'enabled' != $pwyw_enable_plugin ) {
+		return;
+	}
+
+	$pwyw_products_area 	= get_option( 'pwyw_products_area', PWYW_PRODUCTS_AREA );
+	// 1 = all products
+	// 9 = specific categories
+
+	if ( 0 == $pwyw_products_area ) {
+		
+		$pwyw_product_categories 	= get_option( 'pwyw_product_categories' );
+		if( ! has_term( $pwyw_product_categories, 'product_cat', $product_id ) ) {
+			return;
+		}
+	}
+
+	
+	$price = $product->get_price();
+	$_pwyw_override_defaults = get_post_meta( $product_id, '_pwyw_override_defaults', true );
+	
+	if ( 'yes' == $_pwyw_override_defaults ) {
+		$price_set = get_post_meta( $product_id, 'pwyw-single-price', true );
+	}else{
+		$price_set = pwyw_get_the_price_set($product_id, $price);
+	}
+
+	$pwyw_allow_own_price	= get_option( 'pwyw_allow_own_price', PWYW_ALLOW_OWN_PRICE );
+
+	
 	?>
 	
 	<div class='bw-single-price-area'>
 		<input type="hidden" name="bw-price" class="bw-price" value="0">
 		<div class="bw-select-price">
-			<button data-price='5' class="bw-btn-price">$5</button>
-			<button data-price='10' class="bw-btn-price">$10</button>
-			<button data-price='15' class="bw-btn-price">$15</button>
-			<button data-price='25' class="bw-btn-price">$25</button>
+
+			<?php 
+			foreach ($price_set as $price) {
+				echo "<button data-price='{$price}' class='bw-btn-price'>$ {$price}</button>";
+			}
+			?>
+			<?php if ( 'enabled' == $pwyw_allow_own_price ) { ?>			
+			<input type="number" pattern="[0-9]+(\\.[0-9][0-9]?)?" id="bw-own-price" name="" placeholder="My Price">
+			<?php } ?>
+
 		</div>
 	</div>
 

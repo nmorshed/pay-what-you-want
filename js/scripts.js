@@ -23,6 +23,13 @@
 
 			});
 
+			// for own price
+			select_price_area.on('keyup', '#bw-own-price', function(e) {
+				let price = $(this).val();
+				input_price_field.val(price);
+				$(".bw-btn-price").removeClass('price-selected');
+			});
+
 		}
 	
 	

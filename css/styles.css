@@ -1,3 +1,7 @@
 .bw-single-price-area{
 	margin: 20px 0;
 }
+.bw-btn-price {
+    display: inline-block;
+    margin-right: 5px;
+}
