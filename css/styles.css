@@ -5,3 +5,7 @@
     display: inline-block;
     margin-right: 5px;
 }
+.bw-btn-price.price-selected {
+    border: 2px solid;
+    font-weight: 700;
+}

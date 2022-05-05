@@ -24,14 +24,13 @@
 			});
 
 			// for own price
-			select_price_area.on('keyup', '#bw-own-price', function(e) {
+			select_price_area.on('change', '#bw-own-price', function(e) {
 				let price = $(this).val();
 				input_price_field.val(price);
 				$(".bw-btn-price").removeClass('price-selected');
 			});
 
-		}
-	
+		}	
 	
 	//console.log(select_price_area.length);
 
