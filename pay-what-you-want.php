@@ -38,10 +38,13 @@ add_action( 'admin_notices', function() {
 ***********************************/
 define( "PWYW_ENABLE_PLUGIN", 'enabled' );
 define( "PWYW_ALLOW_OWN_PRICE", 'disabled' );
+define( "PWYW_ADD_TO_CART_BTN_INSIDE_LOOP", 'disabled' );
+define( "PWYW_HIDE_SINGLE_PRICE", 'disabled' );
 define( "PWYW_PRODUCTS_AREA",  1);
 define( "PWYW_PRICE_GROUP",  0);
 define( "PWYW_PRICE_FRACTION", 4 );
 define( "PWYW_MIN_PRICE", 5 );
+define( "PWYW_PRICE_TEXT", "Original Price : %price%" );
 define( "PWYW_PREDEFINED_PRICE", [5,10,15,20] );
 
 

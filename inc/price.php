@@ -44,6 +44,36 @@ function pwyw_get_the_price_set($product_id, $price){
 }
 
 
+// Is eligible to action
+function pwyw_is_eligible_to_take_action(){
+
+	$action = true;
+
+	global $product;
+	$product_id = $product->id;
+
+	$pwyw_enable_plugin 	= get_option( 'pwyw_enable_plugin', PWYW_ENABLE_PLUGIN );
+
+	if ( 'enabled' != $pwyw_enable_plugin ) {
+		$action = false;
+	}
+
+	$pwyw_products_area 	= get_option( 'pwyw_products_area', PWYW_PRODUCTS_AREA );
+	// 1 = all products
+	// 0 = specific categories
+
+	if ( 0 == $pwyw_products_area ) {
+		
+		$pwyw_product_categories 	= get_option( 'pwyw_product_categories' );
+		if( ! has_term( $pwyw_product_categories, 'product_cat', $product_id ) ) {
+			$action = false;
+		}
+	}
+
+	return $action;
+}
+
+
 /**
  * Add -- before Add to cart
  */
@@ -52,7 +82,7 @@ function bw_pwyw_price_select_box_before_add_to_cart() {
 	global $product;
 	$product_id = $product->id;
 
-	$pwyw_enable_plugin 	= get_option( 'pwyw_enable_plugin', PWYW_ENABLE_PLUGIN );
+	/*$pwyw_enable_plugin 	= get_option( 'pwyw_enable_plugin', PWYW_ENABLE_PLUGIN );
 
 	if ( 'enabled' != $pwyw_enable_plugin ) {
 		return;
@@ -68,6 +98,10 @@ function bw_pwyw_price_select_box_before_add_to_cart() {
 		if( ! has_term( $pwyw_product_categories, 'product_cat', $product_id ) ) {
 			return;
 		}
+	}*/
+
+	if ( !pwyw_is_eligible_to_take_action() ) {
+		return;
 	}
 
 	
@@ -82,7 +116,6 @@ function bw_pwyw_price_select_box_before_add_to_cart() {
 
 	$pwyw_allow_own_price	= get_option( 'pwyw_allow_own_price', PWYW_ALLOW_OWN_PRICE );
 
-	
 	?>
 	
 	<div class='bw-single-price-area'>
@@ -121,10 +154,6 @@ function bw_pwyw_add_price_to_cart( $cart_item_data, $product_id, $variation_id 
 		return $cart_item_data;
 	}
 
-	/*echo "<pre>";
-	print_r($cart_item_data);
-	echo "</pre>";*/
-
 	$cart_item_data['bw-price'] = $bw_price;
 
 	return $cart_item_data;
@@ -133,31 +162,45 @@ function bw_pwyw_add_price_to_cart( $cart_item_data, $product_id, $variation_id 
 add_filter( 'woocommerce_add_cart_item_data', 'bw_pwyw_add_price_to_cart', 10, 3 );
 
 
-/**
- * Update -- Price
- */
+function pwyw_update_price_to_cart( $cart_obj ) {
 
-/*add_action('woocommerce_cart_calculate_fees', 'spa_set_own_package_price', 10, 1 );
-function spa_set_own_package_price( $wc_cart ){
-	foreach ( $wc_cart->get_cart() as $cart_item_key => $cart_item ) {
-		$bw_price = $cart_item['bw-price'];
-		if ( ! empty( $bw_price) ) {
-			
-			$cart_item['data']->set_price( $bw_price );
-			
-		}
-		
-	}
-}*/
+    foreach( $cart_obj->get_cart() as $key => $value ) {
+        if ( isset( $value['bw-price'] ) ) {
 
-
-function elex_wfp_before_calculate_totals( $cart_obj ) {
-
-    foreach( $cart_obj->get_cart() as $key=>$value ) {
-        if ( isset( $value['bw-price'] )) {
             $price = $value['bw-price'];
             $value['data']->set_price( $price );
+
         }
     }
 }
-add_action( 'woocommerce_before_calculate_totals', 'elex_wfp_before_calculate_totals', 10, 3 );
+add_action( 'woocommerce_before_calculate_totals', 'pwyw_update_price_to_cart', 10, 3 );
+
+
+function pwyw_loop_add_to_cart_option( $html, $product ) {
+
+	if ( !pwyw_is_eligible_to_take_action() ) {
+		return $html;
+	}
+
+	$add_to_cart_btn = get_option( 'pwyw_add_to_cart_btn_inside_loop', PWYW_ADD_TO_CART_BTN_INSIDE_LOOP );
+	if ( 'enabled' == $add_to_cart_btn ) {
+		return $html;	
+	}else{
+		return '<a href="' . get_permalink( $product->id ) . '" class="button">' . __( 'Learn More' ) . '</a>';
+	}
+}
+
+add_filter( 'woocommerce_loop_add_to_cart_link', 'pwyw_loop_add_to_cart_option', 10, 2 );
+
+
+
+function pwyw_product_price_text( $price ) {
+	
+	if ( !pwyw_is_eligible_to_take_action() ) {
+		return $price;
+	}
+
+	$pwyw_price_text = get_option( 'pwyw_price_text', PWYW_PRICE_TEXT );
+    return str_replace("%price%", $price, $pwyw_price_text);
+}
+add_filter( 'woocommerce_get_price_html', 'pwyw_product_price_text' );

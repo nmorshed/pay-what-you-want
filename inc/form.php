@@ -5,14 +5,17 @@
 	
 	$pwyw_allow_own_price = get_option( 'pwyw_allow_own_price', PWYW_ALLOW_OWN_PRICE );
 	$allow_own_price = ( $pwyw_allow_own_price != 'disabled' ) ? 'checked' : '';
+
+	$pwyw_add_to_cart_btn_inside_loop = get_option( 'pwyw_add_to_cart_btn_inside_loop', PWYW_ADD_TO_CART_BTN_INSIDE_LOOP );
+	$add_to_cart_btn = ( $pwyw_add_to_cart_btn_inside_loop != 'disabled' ) ? 'checked' : '';
 	
 	$pwyw_products_area = get_option( 'pwyw_products_area', PWYW_PRODUCTS_AREA );
 	$pwyw_price_group = get_option( 'pwyw_price_group', PWYW_PRICE_GROUP );
 	
 	$pwyw_product_categories = get_option( 'pwyw_product_categories' );
 	$pwyw_price_fraction = get_option( 'pwyw_price_fraction', PWYW_PRICE_FRACTION );
-	//$pwyw_predefined_price_set = get_option( 'pwyw_predefined_price_set' );
 	$pwyw_min_price = get_option( 'pwyw_min_price', PWYW_MIN_PRICE );
+	$pwyw_price_text = get_option( 'pwyw_price_text', PWYW_PRICE_TEXT );
 	
 	$all_products = '';
 	$specific_categories = '';
@@ -122,10 +125,29 @@
 
 				<tr>
 					<th scope="row">
-						<label for="pwyw-allow-own-price"> <?php _e( 'Minimun Price', 'pwyw' ); ?> </label>
+						<label for="pwyw-add-to-cart-btn"> <?php _e( 'Enable "add to cart" button inside loop', 'pwyw' ); ?> </label>
+					</th>
+					<td>
+						<input name="pwyw_add_to_cart_btn_inside_loop" type="checkbox" id="pwyw-add-to-cart-btn" value="enabled" <?php echo $add_to_cart_btn; ?> />
+						<label for="pwyw-add-to-cart-btn"> Enable </label>
+					</td>
+				</tr>
+
+				<tr>
+					<th scope="row">
+						<label> <?php _e( 'Minimun Price', 'pwyw' ); ?> </label>
 					</th>
 					<td>
 						<input type="number" pattern='[0-9]+(\\.[0-9][0-9]?)?' name="pwyw_min_price" value="<?php echo $pwyw_min_price; ?>">
+					</td>
+				</tr>
+
+				<tr>
+					<th scope="row">
+						<label> <?php _e( 'Price text on single product page', 'pwyw' ); ?> </label>
+					</th>
+					<td>
+						<input type="text" name="pwyw_price_text" value="<?php echo $pwyw_price_text; ?>">
 					</td>
 				</tr>
 

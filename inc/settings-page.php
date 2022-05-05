@@ -30,19 +30,23 @@ class BW_PWYW_Settings_Page {
         // Get values from user
         $pwyw_enable_plugin       	= isset( $_POST['pwyw_enable_plugin'] ) ? 'enabled' : 'disabled';
         $pwyw_allow_own_price       = isset( $_POST['pwyw_allow_own_price'] ) ? 'enabled' : 'disabled';
+        $add_to_cart_btn   		    = isset( $_POST['pwyw_add_to_cart_btn_inside_loop'] ) ? 'enabled' : 'disabled';
         $pwyw_products_area 		= sanitize_text_field( $_POST['pwyw_products_area'] );
         $pwyw_price_group   		= sanitize_text_field( $_POST['pwyw_price_group'] );
         $pwyw_price_fraction   		= sanitize_text_field( $_POST['pwyw_price_fraction'] );
         $pwyw_min_price   			= sanitize_text_field( $_POST['pwyw_min_price'] );
+        $pwyw_price_text   			= sanitize_text_field( $_POST['pwyw_price_text'] );
         $pwyw_product_categories	= isset( $_POST['pwyw_product_categories'] ) ? $this->pwyw_recursive_sanitize_array( $_POST['pwyw_product_categories'] ) : array();
         $pwyw_predefined_price_set	= isset( $_POST['pwyw_predefined_price_set'] ) ? $this->pwyw_recursive_sanitize_array( $_POST['pwyw_predefined_price_set'] ) : array();
 			
 		update_option( 'pwyw_enable_plugin', $pwyw_enable_plugin );
 		update_option( 'pwyw_allow_own_price', $pwyw_allow_own_price );
+		update_option( 'pwyw_add_to_cart_btn_inside_loop', $add_to_cart_btn );
 		update_option( 'pwyw_products_area', $pwyw_products_area );
 		update_option( 'pwyw_price_group', $pwyw_price_group );
 		update_option( 'pwyw_price_fraction', $pwyw_price_fraction );
 		update_option( 'pwyw_min_price', $pwyw_min_price );
+		update_option( 'pwyw_price_text', $pwyw_price_text );
 		update_option( 'pwyw_product_categories', $pwyw_product_categories );
 		update_option( 'pwyw_predefined_price_set', $pwyw_predefined_price_set );
 		
