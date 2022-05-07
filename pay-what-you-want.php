@@ -2,7 +2,7 @@
 /**
  * @wordpress-plugin
  * Plugin Name:       Pay What You Want
- * Plugin URI:        http://betterwizard.com
+ * Plugin URI:        https://github.com/nmorshed/pay-what-you-want
  * Description:       A simple tool to add a variable payment option to your product so that people can buy your product with a given of sets of price.
  * Version:           1.0.0
  * Author:            Better Wizard
