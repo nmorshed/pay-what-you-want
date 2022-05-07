@@ -4,9 +4,9 @@
  * Plugin Name:       Pay What You Want
  * Plugin URI:        http://betterwizard.com
  * Description:       A simple tool to add a variable payment option to your product so that people can buy your product with a given of sets of price.
- * Version:           2.0
+ * Version:           1.0.0
  * Author:            Better Wizard
- * Author URI:        http://betterwizard.com
+ * Author URI:        http://niaj.me
  * Text Domain:       pwyw
  * Domain Path:       /languages
  */
@@ -20,12 +20,10 @@ if ( ! defined( 'ABSPATH' )) {
 ***********************************/
 add_action( 'admin_notices', function() {
 
-	$notice = '<div class="notice notice-error is-dismissible">';
-		$notice .= "<p>Please install <strong> WooCommerce </strong> plugin before use the <strong>Pay What You Want</strong> plugin</p>";
-	$notice .= '</div>';
-
-	if ( ! class_exists( 'WooCommerce' ) ) {
-		echo $notice;
+	if ( ! class_exists( 'WooCommerce' ) ) { ?>
+		<div class="notice notice-error is-dismissible">
+			<p>Please install <strong> WooCommerce </strong> plugin before use the <strong>Pay What You Want</strong> plugin</p>
+		</div> <?php
 	}
 
 });
@@ -84,8 +82,7 @@ add_action( 'plugins_loaded', function() {
 			require_once( plugin_dir_path( __FILE__ ) . 'inc/single-product-settings.php' );
 		}else{
 			require_once( plugin_dir_path( __FILE__ ) . 'inc/pay-what-you-want.php' );
-		}
-		
+		}		
 	}
 
 } );

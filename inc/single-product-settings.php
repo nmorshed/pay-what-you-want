@@ -58,12 +58,12 @@ if ( ! function_exists( 'woocom_save_proddata_custom_fields' ) ) {
     function woocom_save_proddata_custom_fields($post_id) {
 
         $_pwyw_override_defaults = isset( $_POST['_pwyw_override_defaults'] ) ? 'yes' : 'no';
-        $pwyw_single_rice = $_POST['pwyw-single-price'];
+        $pwyw_single_price = isset( $_POST['pwyw-single-price'] ) ? pwyw_hf_recursive_sanitize_array( $_POST['pwyw-single-price'] ) : array();
 
         update_post_meta( $post_id, '_pwyw_override_defaults', $_pwyw_override_defaults );
         
-        if ( 'yes' == $_pwyw_override_defaults && !empty( $pwyw_single_rice ) ) {
-            update_post_meta( $post_id, 'pwyw-single-price', ( $pwyw_single_rice ) );
+        if ( 'yes' == $_pwyw_override_defaults && !empty( $pwyw_single_price ) ) {
+            update_post_meta( $post_id, 'pwyw-single-price', ( $pwyw_single_price ) );
         }
     }
 

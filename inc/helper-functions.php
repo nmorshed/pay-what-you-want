@@ -7,8 +7,11 @@ if ( ! function_exists( 'pwyw_predefined_price_set' ) ) {
     	$pwyw_predefined_price_set = get_option( 'pwyw_predefined_price_set', PWYW_PREDEFINED_PRICE );
         $pwyw_min_price = get_option( 'pwyw_min_price', 5 );
 
-        foreach ( $pwyw_predefined_price_set as $price ) {
-        	echo "<div class='price-set-input'><input type='number' pattern='[0-9]+(\\.[0-9][0-9]?)?' name='pwyw_predefined_price_set[]' value='{$price}' min='{$pwyw_min_price}' /> <span class='pwyw-remove'> x </span></div>";
+        foreach ( $pwyw_predefined_price_set as $price ) { ?>
+        	<div class='price-set-input'>
+                <input type='number' pattern='[0-9]+(\\.[0-9][0-9]?)?' name='pwyw_predefined_price_set[]' value='<?php esc_html_e( $price ); ?>' min='<?php esc_html_e( $pwyw_min_price ); ?>' />
+                <span class='pwyw-remove'> x </span>
+            </div> <?php 
         }
     }
 
@@ -19,21 +22,17 @@ if ( ! function_exists( 'pwyw_single_product_price_set' ) ) {
     function pwyw_single_product_price_set( $post_id ){
 
         $price_set = get_post_meta( $post_id, 'pwyw-single-price', true );
-        $pwyw_min_price = get_option( 'pwyw_min_price', 5 );
+        $pwyw_min_price = get_option( 'pwyw_min_price', PWYW_MIN_PRICE );
         if ( empty( $price_set ) ) {
         	$price_set = get_option( 'pwyw_predefined_price_set', PWYW_PREDEFINED_PRICE );
         }
 
-        $price_display = "";
-        $price_display .= "";
-
-        foreach ( $price_set as $price ) {
-        	$price_display .= "<div class='price-set-input'><input type='number' pattern='[0-9]+(\\.[0-9][0-9]?)?' name='pwyw-single-price[]' value='{$price}' min='{$pwyw_min_price}'> <span class='pwyw-remove'> x </span></div>";
-        }
-
-        $price_display .= "";
-
-        echo $price_display;
+        foreach ( $price_set as $price ) { ?>
+        	<div class='price-set-input'>
+                <input type='number' pattern='[0-9]+(\\.[0-9][0-9]?)?' name='pwyw-single-price[]' value='<?php esc_html_e( $price ); ?>' min='<?php esc_html_e( $pwyw_min_price ); ?>'>
+                <span class='pwyw-remove'> x </span>
+            </div>
+        <?php }
     }
 
 }
@@ -53,9 +52,10 @@ if ( ! function_exists( 'pwyw_product_categories_checkbox' ) ) {
 
         	if ( !empty( $selected_categories ) ) {
         		$selected = ( in_array( $cat_id, $selected_categories ) ) ? 'checked' : '';
-        	}    	
+        	} ?>  	
 
-        	echo "<input type='checkbox' name='pwyw_product_categories[]' value='{$cat_id}' id='product-cat-{$cat_id}' {$selected} /> <label for='product-cat-{$cat_id}'>$cat_name </label>";
+        	<input type='checkbox' name='pwyw_product_categories[]' value='<?php esc_html_e( $cat_id ); ?>' id='product-cat-<?php esc_html_e( $cat_id ); ?>' <?php esc_html_e( $selected ); ?> />
+            <label for='product-cat-<?php esc_html_e( $cat_id ); ?>'> <?php esc_html_e( $cat_name ); ?> </label> <?php 
         }
     }
 
@@ -131,4 +131,18 @@ if ( ! function_exists( 'pwyw_is_eligible_to_take_action' ) ) {
 
         return $action;
     }
+}
+
+// Sanitize Array
+function pwyw_hf_recursive_sanitize_array( $array ) {
+    foreach ( $array as $key => &$value ) {
+        if ( is_array( $value ) ) {
+            $value = recursive_sanitize_text_field( $value );
+        }
+        else {
+            $value = sanitize_text_field( $value );
+        }
+    }
+
+    return $array;
 }

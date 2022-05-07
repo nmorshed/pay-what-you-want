@@ -55,7 +55,7 @@
 						<label for="pwyw_enable_plugin"> <?php _e( 'Enable This Plugin', 'pwyw' ); ?> </label>
 					</th>
 					<td>
-						<input name="pwyw_enable_plugin" type="checkbox" id="pwyw_enable_plugin" value="enabled" <?php echo $plugin_enabled; ?> />
+						<input name="pwyw_enable_plugin" type="checkbox" id="pwyw_enable_plugin" value="enabled" <?php esc_html_e( $plugin_enabled ); ?> />
 						<label for="pwyw_enable_plugin"> Enable </label>
 					</td>
 				</tr>
@@ -66,12 +66,12 @@
 					</th>
 					<td>
 						<div>
-							<input type='radio' id='pwyw_all_products' name='pwyw_products_area' value="1" <?php echo $all_products; ?> >
+							<input type='radio' id='pwyw_all_products' name='pwyw_products_area' value="1" <?php esc_html_e( $all_products ); ?> >
 							<label for='pwyw_all_products'><?php _e('All products', 'pwyw'); ?></label>
 						</div>
 
-						<div class="<?php echo $specific_categories; ?>" >
-							<input type='radio'id='pwyw_specific_categories' name='pwyw_products_area' value="0" <?php echo $specific_categories; ?>>
+						<div class="<?php esc_html_e( $specific_categories ); ?>" >
+							<input type='radio'id='pwyw_specific_categories' name='pwyw_products_area' value="0" <?php esc_html_e( $specific_categories ); ?>>
 							<label for='pwyw_specific_categories'><?php _e('Some specific categories', 'pwyw'); ?></label>
 							
 							<div class="pwyw_product_categories pwyw-open">
@@ -87,17 +87,17 @@
 						<label><?php _e('Price set will depend on:', 'pwyw'); ?></label>
 					</th>
 					<td>
-						<div class="<?php echo $based_on_product_price; ?>">
-							<input type='radio' id='pwyw-product-price' name='pwyw_price_group' value="1" <?php echo $based_on_product_price; ?>>
+						<div class="<?php esc_html_e( $based_on_product_price ); ?>">
+							<input type='radio' id='pwyw-product-price' name='pwyw_price_group' value="1" <?php esc_html_e( $based_on_product_price ); ?>>
 							<label for='pwyw-product-price'><?php _e('Product price (How many pieces it will be?)', 'pwyw'); ?></label>
 							
 							<div id="pwyw_price_fraction" class="pwyw-open">
-								<input type="number" name="pwyw_price_fraction" value="<?php echo $pwyw_price_fraction; ?>">
+								<input type="number" name="pwyw_price_fraction" value="<?php esc_html_e( $pwyw_price_fraction ); ?>">
 							</div>
 						</div>
 
-						<div class="<?php echo $predefined_price; ?>">
-							<input type='radio' id='pwyw_predefined_price' name='pwyw_price_group' value="0" <?php echo $predefined_price; ?>>
+						<div class="<?php esc_html_e( $predefined_price ); ?>">
+							<input type='radio' id='pwyw_predefined_price' name='pwyw_price_group' value="0" <?php esc_html_e( $predefined_price ); ?>>
 							<label for='pwyw_predefined_price'><?php _e('A predefined set of price', 'pwyw'); ?></label>
 							
 							<div class="pwyw-open">
@@ -118,7 +118,7 @@
 						<label for="pwyw-allow-own-price"> <?php _e( 'Allow Custmer To Enter Own Price', 'pwyw' ); ?> </label>
 					</th>
 					<td>
-						<input name="pwyw_allow_own_price" type="checkbox" id="pwyw-allow-own-price" value="enabled" <?php echo $allow_own_price; ?> />
+						<input name="pwyw_allow_own_price" type="checkbox" id="pwyw-allow-own-price" value="enabled" <?php esc_html_e( $allow_own_price ); ?> />
 						<label for="pwyw-allow-own-price"> Enable </label>
 					</td>
 				</tr>
@@ -128,7 +128,7 @@
 						<label for="pwyw-add-to-cart-btn"> <?php _e( 'Enable "add to cart" button inside loop', 'pwyw' ); ?> </label>
 					</th>
 					<td>
-						<input name="pwyw_add_to_cart_btn_inside_loop" type="checkbox" id="pwyw-add-to-cart-btn" value="enabled" <?php echo $add_to_cart_btn; ?> />
+						<input name="pwyw_add_to_cart_btn_inside_loop" type="checkbox" id="pwyw-add-to-cart-btn" value="enabled" <?php esc_html_e( $add_to_cart_btn ); ?> />
 						<label for="pwyw-add-to-cart-btn"> Enable </label>
 					</td>
 				</tr>
@@ -138,7 +138,7 @@
 						<label> <?php _e( 'Minimun Price', 'pwyw' ); ?> </label>
 					</th>
 					<td>
-						<input type="number" pattern='[0-9]+(\\.[0-9][0-9]?)?' name="pwyw_min_price" value="<?php echo $pwyw_min_price; ?>">
+						<input type="number" pattern='[0-9]+(\\.[0-9][0-9]?)?' name="pwyw_min_price" value="<?php esc_html_e( $pwyw_min_price ); ?>">
 					</td>
 				</tr>
 
@@ -147,7 +147,7 @@
 						<label> <?php _e( 'Price text on single product page', 'pwyw' ); ?> </label>
 					</th>
 					<td>
-						<input type="text" name="pwyw_price_text" value="<?php echo $pwyw_price_text; ?>">
+						<input type="text" name="pwyw_price_text" value="<?php esc_html_e( $pwyw_price_text ); ?>">
 					</td>
 				</tr>
 

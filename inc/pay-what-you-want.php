@@ -33,13 +33,15 @@ if ( ! function_exists( 'bw_pwyw_price_select_box_before_add_to_cart' ) ) {
 
 				<?php 
 				foreach ($price_set as $price) {
-					if ( $price >= $pwyw_min_price ) {
-						echo "<button data-price='{$price}' class='bw-btn-price'>$ {$price}</button>";
+					if ( $price >= $pwyw_min_price ) { ?>
+						<button data-price='<?php esc_html_e( $price ); ?>' class='bw-btn-price'>
+							<?php echo get_woocommerce_currency_symbol(); esc_html_e( $price ); ?>
+						</button> <?php
 					}
 				}
 				?>
 				<?php if ( 'enabled' == $pwyw_allow_own_price ) { ?>			
-				<input type="number" pattern="[0-9]+(\\.[0-9][0-9]?)?" min="<?php echo $pwyw_min_price; ?>" id="bw-own-price" value="" placeholder="My Price">
+				<input type="number" pattern="[0-9]+(\\.[0-9][0-9]?)?" min="<?php esc_html_e( $pwyw_min_price ); ?>" id="bw-own-price" value="" placeholder="My Price">
 				<?php } ?>
 
 			</div>

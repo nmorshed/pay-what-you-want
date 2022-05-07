@@ -37,8 +37,8 @@ if ( ! class_exists( 'BW_PWYW_Settings_Page' ) ) {
 	        $pwyw_price_fraction   		= sanitize_text_field( $_POST['pwyw_price_fraction'] );
 	        $pwyw_min_price   			= sanitize_text_field( $_POST['pwyw_min_price'] );
 	        $pwyw_price_text   			= sanitize_text_field( $_POST['pwyw_price_text'] );
-	        $pwyw_product_categories	= isset( $_POST['pwyw_product_categories'] ) ? $this->pwyw_recursive_sanitize_array( $_POST['pwyw_product_categories'] ) : array();
-	        $pwyw_predefined_price_set	= isset( $_POST['pwyw_predefined_price_set'] ) ? $this->pwyw_recursive_sanitize_array( $_POST['pwyw_predefined_price_set'] ) : array();
+	        $pwyw_product_categories	= isset( $_POST['pwyw_product_categories'] ) ? pwyw_hf_recursive_sanitize_array( $_POST['pwyw_product_categories'] ) : array();
+	        $pwyw_predefined_price_set	= isset( $_POST['pwyw_predefined_price_set'] ) ? pwyw_hf_recursive_sanitize_array( $_POST['pwyw_predefined_price_set'] ) : array();
 				
 			update_option( 'pwyw_enable_plugin', $pwyw_enable_plugin );
 			update_option( 'pwyw_allow_own_price', $pwyw_allow_own_price );
@@ -59,20 +59,6 @@ if ( ! class_exists( 'BW_PWYW_Settings_Page' ) ) {
 	        $newlink = sprintf( "<a href='%s'>%s</a>" , admin_url( 'edit.php?post_type=product&page=bw-pwyw' ) , __( 'Settings' , 'pwya' ) );
 	        $links[] = $newlink;
 	        return $links;
-	    }
-
-		// Sanitize Array
-	    public function pwyw_recursive_sanitize_array( $array ) {
-	        foreach ( $array as $key => &$value ) {
-	            if ( is_array( $value ) ) {
-	                $value = recursive_sanitize_text_field( $value );
-	            }
-	            else {
-	                $value = sanitize_text_field( $value );
-	            }
-	        }
-
-	        return $array;
 	    }
 
 	}
