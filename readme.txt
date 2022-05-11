@@ -1,6 +1,6 @@
 === Pay What You Want ===
 Contributors:		niaj, betterwizard
-Tags:				woocommerce, open-price, non-profit, dynamic-open-price
+Tags:				woocommerce, open-price, non-profit, dynamic-open-price, pay-what-you-ant
 Requires at least:	4.0
 Tested up to:		5.9
 Requires PHP:		5.6
@@ -10,17 +10,17 @@ Stable tag:			1.0.0
 
 == Description ==
 
-This plugin will help you to set your product price to an open price/ a set of predefined price or it can create fraction of price based on product price.
+This plugin will help you to set your product price to an open price/ a set of predefined prices or it can create a fraction of the price based on the product price.
 
-The price set can be applied based on categories and it also customizable for individual products.
+The price set can be applied based on categories and it is also customizable for individual products.
 
-
-It's really handy for non profit organizations or if you run an offer on any special occations.
+It’s really handy for non-profit organizations or if you run an offer on any special occasion.
 
 = Live demo =
 
-Visit our [live demo](http://pwyw.betterwizard.com/index.php/product/hoodie-with-zipper/ "live demo") here to see how this plugin works.
+Visit our [live demo](https://pwyw.betterwizard.com/product/my-lovely-product/ "live demo") here to see how this plugin works.
 
+https://youtu.be/PtRFdM4nKYo
 
 == Settings==
 
@@ -39,6 +39,11 @@ Price set will depend on:
 2. Go to plugins in your dashboard and select "Add New"
 3. Search for "Pay What You Want", Install & Activate it
 4. Go to Products > Pay What You Want to make your own settings
+
+== Screenshots ==
+1. Example 1
+2. Settings
+3. Example 2
 
 == Changelog ==
 = 1.0.0 =
